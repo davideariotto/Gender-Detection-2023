@@ -2,6 +2,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 from matplotlib import pyplot
 import seaborn
+import utils
 
 def plotFeatures(D, L, features_list, labels_list, mode):
     for i in range(D.shape[0]):
@@ -26,7 +27,8 @@ def plotFeatures(D, L, features_list, labels_list, mode):
                 plt.close()
     return            
 
-def heatmap(D, L, note=False):   
+def heatmap(D, L, note=False):
+    
     if(note == False):
         folder = "no_an"
     else:
@@ -35,24 +37,24 @@ def heatmap(D, L, note=False):
     # Training set
     plt.figure()
     plt.title("Heatmap of the whole training set", pad = 12.0)
-    seaborn.heatmap(np.corrcoef(D), linewidth=0.2, cmap="Greys", square=True, cbar=False, annot=note)
+    seaborn.heatmap(abs(np.corrcoef(D)), cmap="Greys", annot=note)
     plt.savefig("./heatmaps/"+folder+"/all.png", dpi=1200)
     plt.close()
     
     # False class
     plt.figure()
     plt.title("Heatmap of the false class", pad = 12.0)
-    seaborn.heatmap(np.corrcoef(D[:, L==0]), linewidth=0.2, cmap="Reds", square=True,cbar=False, annot=note)
+    seaborn.heatmap(abs(np.corrcoef(D[:, L==0])), cmap="Reds", annot=note)
     plt.savefig("./heatmaps/"+folder+"/false.png", dpi=1200)
     plt.close()
     
     # True class
     plt.figure()
     plt.title("Heatmap of the true class", pad = 12.0)
-    seaborn.heatmap(np.corrcoef(D[:, L==1]), linewidth=0.2, cmap="Blues", square=True, cbar=False, annot=note)
+    seaborn.heatmap(abs(np.corrcoef(D[:, L==1])), cmap="Blues", annot=note)
     plt.savefig("./heatmaps/"+folder+"/true.png", dpi=1200)
     plt.close()
-    
+
     return
 
 

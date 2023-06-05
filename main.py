@@ -1,20 +1,25 @@
 import utils
 import plot
 import numpy as np
+import gaussianClassifier as gc
 
 
 # Load the training data
-D,L = utils.load("data/Train.txt")
+D, L = utils.load("data/Train.txt")
 
-print(D.shape)
-print(L.shape)
+print("Number of training samples for the male class: " + str(D[:, L==0].shape[1]))
+print("Number of training samples for the female class: " + str(D[:, L==1].shape[1]))
+print("Number of features: " + str(D.shape[0]))
 
 # Features exploration
-plot.plotFeatures(D, L, utils.features_list, utils.classes_list, "original")
+#plot.plotFeatures(D, L, utils.features_list, utils.classes_list, "original")
 normalizedData, normalizedMean, normalizedStandardDeviation = utils.ZNormalization(D)
-plot.plotFeatures(normalizedData, L, utils.features_list, utils.classes_list, "normalized")
+normalizedData = utils.Gaussianization(normalizedData)
+#plot.plotFeatures(normalizedData, L, utils.features_list, utils.classes_list, "normalized-gaussianized")
 
 # Correlation analysis
-plot.heatmap(normalizedData, L, True)
-plot.heatmap(normalizedData, L, False)
-    
+#plot.heatmap(normalizedData, L, True)
+#plot.heatmap(normalizedData, L, False)
+
+# MVG CLASSIFIER 
+gc.computeMVGClassifier(normalizedData, L)
