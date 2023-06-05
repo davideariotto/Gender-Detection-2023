@@ -73,7 +73,7 @@ def evaluateGaussianClassifier(D, L, mode):
     dcf_kfold_01 = utils.minimum_detection_costs(scoresKFold, evaluationLabelsKFold, 0.1,1,1)
     dcf_kfold_09 = utils.minimum_detection_costs(scoresKFold, evaluationLabelsKFold, 0.9,1,1)
     
-    return dcf_single_05, dcf_single_01, dcf_single_01, dcf_kfold_05, dcf_kfold_01, dcf_kfold_09
+    return dcf_single_05, dcf_single_01, dcf_single_09, dcf_kfold_05, dcf_kfold_01, dcf_kfold_09
 
 
 def computeMVGClassifier (D,L):

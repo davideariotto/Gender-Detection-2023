@@ -249,7 +249,8 @@ def compute_dc (CM, pi1, cfn, cfp):
     FPR = CM[1][0]/(CM[0][0]+CM[1][0])
     
     #Calculate un-normalized detection cost
-    return (pi1*cfn*FNR +(1-pi1)*cfp*FPR)
+    return (pi1*cfn*FNR + (1-pi1)*cfp*FPR)
+
 
 def normalized_dc (DCF, pi1, cfn, cfp):
     # vector with dummy costs (dummy = system that always predict one class)
