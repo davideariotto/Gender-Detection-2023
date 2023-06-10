@@ -103,7 +103,7 @@ def computeMVGClassifier (D,L):
     print("%.3f  %.3f  %.3f  %.3f  %.3f  %.3f" %(res1, res2, res3, res4, res5, res6))
     
     
-    m = 11
+    m = 10
     modes = ['fc', 'nb', 'tc']
     messages = ['Full Covariance', 'Diagonal Covariance', 'Tied Covariance']
     while ( m > 8 ):

@@ -1,6 +1,7 @@
 import numpy as np
 from scipy.stats import norm
 
+models = [ [0.5, 1, 1], [0.1, 1, 1], [0.9, 1, 1] ]  # [pi, cfp, cfn]
 classes_list = ["Male", "Female"]
 features_list = ["f1", "f2", "f3", "f4", "f5", "f6", "f7", "f8", "f9", "f10", "f11", "f12"]
 
@@ -155,6 +156,22 @@ def Kfold(D, L, trainModel=None, getScores=None, train=True, K=5, seed=0):
 DIMENSIONALITY REDUCTION
 
 """
+# Compute the minimum number of principal components that keep at least 100*t % of the original information
+def min_principal_comps(D, t=0.99):
+    
+    cov_matrix = covarianceMatrix(D) # covariance matrix
+    
+    eigenvalues, _ = np.linalg.eigh(cov_matrix)
+    sorted_eigenvalues = np.sort(eigenvalues)[::-1]
+    
+    # Calculate the cumulative sum of eigenvalues
+    cum_sum = np.cumsum(sorted_eigenvalues)
+    total_sum = np.sum(sorted_eigenvalues)
+    
+    # Find the minimum number of principal components that retain at least 95% of the original information
+    min_components = np.argmax(cum_sum >= t * total_sum) + 1
+    
+    return min_components
 
 def PCA(D, L, m):
     
