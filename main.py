@@ -3,7 +3,8 @@ import plot
 import numpy as np
 import gaussianClassifier as gc
 import SVM
-
+import scoresRecalibration as sr
+import experimentalPart as ep
 
 # Load the training data
 D, L = utils.load("data/Train.txt")
@@ -31,7 +32,7 @@ MVG CLASSIFIER
 
 '''
 
-gc.computeMVGClassifier(normalizedData, L)
+#gc.computeMVGClassifier(normalizedData, L)
 
 
 '''
@@ -41,6 +42,7 @@ LOGISTIC REGRESSION
 '''
 
 ### TO DO !!!
+lambd_lr = 1e-4 # best value of lambda
 
 '''
 
@@ -89,3 +91,42 @@ C_RBF = 10**(-1)
 gamma_RBG = 10**(-3)
 
 #SVM.computeRBFKernel(normalizedData, L, C = C_RBF, gamma = gamma_RBG, K = 1.0)
+
+'''
+
+GAUSSIAN MIXTURE MODEL
+
+'''
+
+### TO DO !!!
+# Best values of components for each model
+nComp_full = 2 # 2^2 = 4
+nComp_diag = 4 # 2^5 = 32
+nComp_tied = 3 # 2^6 = 64
+
+'''
+
+SCORES RECALIBRATION
+
+'''
+
+#sr.computeActualDCF(normalizedData, L, lambd = lambd_lr, components = nComp_full)
+#sr.computeBayesErrorPlots(normalizedData, L, lambd = lambd_lr, components = nComp_full)
+#sr.calibratedBayesErrorPlots(normalizedData, L, lambd = lambd_lr, components = nComp_full)
+#sr.computeCalibratedErrorPlot(normalizedData, L, lambd = lambd_lr, components = nComp_full)
+    
+    
+# EXPERIMENTAL RESULTS 
+
+  
+DT, LT = utils.load("data/Test.txt")
+
+# On Z-normalization we use the mean and the standard deviation of the Z-normalization done on the training set
+normalizedDataTest, _, _ = utils.ZNormalization(DT, normalizedMean, normalizedStandardDeviation)
+normalizedDataTest = utils.Gaussianization(normalizedDataTest)
+
+#ep.computeExperimentalResults(normalizedData, L, normalizedDataTest, LT)
+
+#ep.EvaluateHyperParameterChosen(normalizedData, L, normalizedDataTest, LT)
+
+#ep.computeROC(normalizedData, L, normalizedDataTest, LT)

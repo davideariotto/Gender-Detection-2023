@@ -35,7 +35,7 @@ def load(filename):
     return dataset_matrix, labels_array
 
 # Transform the data into a distribution with 0 mean and 1 variance
-def ZNormalization(D):
+def ZNormalization(D, mu = None, sigma = None):
     mu = D.mean(axis=1)
     sigma = D.std(axis=1)
     normalizedData = (D - mcol(mu)) / mcol(sigma)
@@ -275,3 +275,49 @@ def normalized_dc (DCF, pi1, cfn, cfp):
     i = np.argmin(temp) # index of the optimal dummy system
     
     return DCF/temp[i] # normalized DCF
+
+def compute_actual_DCF(llr, labels, pi1, cfn, cfp):
+    
+    predictions = (llr > ( -np.log(pi1/(1 - pi1)))).astype(int)
+    
+    CM = confusionMatrix(predictions, labels, 2)
+    DCFu = evaluationBinaryTask(pi1, cfn, cfp, CM)
+        
+    normalizedDCF = normalizedEvaluationBinaryTask(pi1, cfn, cfp, DCFu)
+        
+    return normalizedDCF
+
+
+def evaluationBinaryTask(pi1, Cfn, Cfp, confMatrix):
+    # Compute FNR and FPR
+    FNR = confMatrix[0][1]/(confMatrix[0][1]+confMatrix[1][1])
+    FPR = confMatrix[1][0]/(confMatrix[0][0]+confMatrix[1][0])
+    # Compute empirical Bayes risk, that is the cost that we pay due to our
+    # decisions c* for the test data.
+    DCFu = pi1*Cfn*FNR+(1-pi1)*Cfp*FPR
+    return DCFu
+
+def normalizedEvaluationBinaryTask(pi1, Cfn, Cfp, DCFu):
+    # Define vector with dummy costs
+    dummyCosts = np.array([pi1*Cfn, (1-pi1)*Cfp])
+    # Compute risk for an optimal dummy system
+    index = np.argmin(dummyCosts)
+    # Compute normalized DCF
+    DCFn = DCFu/dummyCosts[index]
+    return DCFn
+
+
+def computeOptimalBayesDecisionBinaryTaskTHRESHOLD(llrs, labels, t):
+    # if llr > threshold => predict 1
+    # If llr <= threshold => predict 0
+    predictions = (llrs > t).astype(int)
+    
+    m = confusionMatrix(predictions, labels, 2)
+    return m
+
+def computeFPRTPR(pi1, Cfn, Cfp, confMatrix):
+    # Compute FNR and FPR
+    FNR = confMatrix[0][1]/(confMatrix[0][1]+confMatrix[1][1])
+    TPR = 1-FNR
+    FPR = confMatrix[1][0]/(confMatrix[0][0]+confMatrix[1][0])
+    return (FPR, TPR)
