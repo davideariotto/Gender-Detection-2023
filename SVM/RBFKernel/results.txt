@@ -1,0 +1,48 @@
+
+no PCA || single-fold
+Data for prior 0.5 cfp: 1 cfn: 1
+C =  1 gamma = 0.001 application with prior: 0.5 minDCF =  0.6404989331518289
+Data for prior 0.1 cfp: 1 cfn: 1
+C =  1 gamma = 0.001 application with prior: 0.1 minDCF =  0.8851857233536506
+Data for prior 0.9 cfp: 1 cfn: 1
+C =  1 gamma = 0.001 application with prior: 0.9 minDCF =  0.9616546470988612
+
+PCA m = 10 || single-fold
+Data for prior 0.5 cfp: 1 cfn: 1
+C =  1 gamma = 0.001 application with prior: 0.5 minDCF =  0.679800243195497
+Data for prior 0.1 cfp: 1 cfn: 1
+C =  1 gamma = 0.001 application with prior: 0.1 minDCF =  0.8949211908931699
+Data for prior 0.9 cfp: 1 cfn: 1
+C =  1 gamma = 0.001 application with prior: 0.9 minDCF =  0.9781659388646288
+
+PCA m = 8 || single-fold
+Data for prior 0.5 cfp: 1 cfn: 1
+C =  1 gamma = 0.001 application with prior: 0.5 minDCF =  0.6246223969287009
+Data for prior 0.1 cfp: 1 cfn: 1
+C =  1 gamma = 0.001 application with prior: 0.1 minDCF =  0.926444833625219
+Data for prior 0.9 cfp: 1 cfn: 1
+C =  1 gamma = 0.001 application with prior: 0.9 minDCF =  0.9650655021834061
+
+no PCA || k-folds
+Data for prior 0.5 cfp: 1 cfn: 1
+C =  1 gamma = 0.001 application with prior: 0.5 minDCF =  0.6777777777777778
+Data for prior 0.1 cfp: 1 cfn: 1
+C =  1 gamma = 0.001 application with prior: 0.1 minDCF =  0.9571428571428572
+Data for prior 0.9 cfp: 1 cfn: 1
+C =  1 gamma = 0.001 application with prior: 0.9 minDCF =  0.9853174603174604
+
+PCA m = 10 || k-fold
+Data for prior 0.5 cfp: 1 cfn: 1
+C =  1 gamma = 0.001 application with prior: 0.5 minDCF =  0.6742063492063493
+Data for prior 0.1 cfp: 1 cfn: 1
+C =  1 gamma = 0.001 application with prior: 0.1 minDCF =  0.944047619047619
+Data for prior 0.9 cfp: 1 cfn: 1
+C =  1 gamma = 0.001 application with prior: 0.9 minDCF =  0.9819444444444444
+
+PCA m = 8 || k-fold
+Data for prior 0.5 cfp: 1 cfn: 1
+C =  1 gamma = 0.001 application with prior: 0.5 minDCF =  0.6569444444444444
+Data for prior 0.1 cfp: 1 cfn: 1
+C =  1 gamma = 0.001 application with prior: 0.1 minDCF =  0.9803571428571428
+Data for prior 0.9 cfp: 1 cfn: 1
+C =  1 gamma = 0.001 application with prior: 0.9 minDCF =  0.977579365079365

@@ -1,0 +1,80 @@
+
+no PCA || single-fold
+Data for prior 0.5 cfp: 1 cfn: 1
+C =  3.0000000000000004e-05 c = 15 application with prior: 0.5 minDCF =  0.8520101866793108
+Data for prior 0.1 cfp: 1 cfn: 1
+C =  3.0000000000000004e-05 c = 15 application with prior: 0.1 minDCF =  1.0
+Data for prior 0.9 cfp: 1 cfn: 1
+C =  3.0000000000000004e-05 c = 15 application with prior: 0.9 minDCF =  0.9764605113223563
+
+PCA m = 11 || single-fold
+Data for prior 0.5 cfp: 1 cfn: 1
+C =  3.0000000000000004e-05 c = 15 application with prior: 0.5 minDCF =  0.8527137711362125
+Data for prior 0.1 cfp: 1 cfn: 1
+C =  3.0000000000000004e-05 c = 15 application with prior: 0.1 minDCF =  1.0
+Data for prior 0.9 cfp: 1 cfn: 1
+C =  3.0000000000000004e-05 c = 15 application with prior: 0.9 minDCF =  0.9764605113223563
+
+PCA m = 10 || single-fold
+Data for prior 0.5 cfp: 1 cfn: 1
+C =  3.0000000000000004e-05 c = 15 application with prior: 0.5 minDCF =  0.891380325637241
+Data for prior 0.1 cfp: 1 cfn: 1
+C =  3.0000000000000004e-05 c = 15 application with prior: 0.1 minDCF =  1.0
+Data for prior 0.9 cfp: 1 cfn: 1
+C =  3.0000000000000004e-05 c = 15 application with prior: 0.9 minDCF =  0.9895609480035791
+
+PCA m = 9 || single-fold
+Data for prior 0.5 cfp: 1 cfn: 1
+C =  3.0000000000000004e-05 c = 15 application with prior: 0.5 minDCF =  0.8893995824379202
+Data for prior 0.1 cfp: 1 cfn: 1
+C =  3.0000000000000004e-05 c = 15 application with prior: 0.1 minDCF =  1.0
+Data for prior 0.9 cfp: 1 cfn: 1
+C =  3.0000000000000004e-05 c = 15 application with prior: 0.9 minDCF =  1.01139500913895
+
+PCA m = 8 || single-fold
+Data for prior 0.5 cfp: 1 cfn: 1
+C =  3.0000000000000004e-05 c = 15 application with prior: 0.5 minDCF =  0.9222233268838091
+Data for prior 0.1 cfp: 1 cfn: 1
+C =  3.0000000000000004e-05 c = 15 application with prior: 0.1 minDCF =  1.0
+Data for prior 0.9 cfp: 1 cfn: 1
+C =  3.0000000000000004e-05 c = 15 application with prior: 0.9 minDCF =  1.01139500913895
+
+no PCA || k-folds
+Data for prior 0.5 cfp: 1 cfn: 1
+C =  3.0000000000000004e-05 c = 15 application with prior: 0.5 minDCF =  0.794047619047619
+Data for prior 0.1 cfp: 1 cfn: 1
+C =  3.0000000000000004e-05 c = 15 application with prior: 0.1 minDCF =  0.9994047619047619
+Data for prior 0.9 cfp: 1 cfn: 1
+C =  3.0000000000000004e-05 c = 15 application with prior: 0.9 minDCF =  0.9944444444444444
+
+PCA m = 11 || k-fold
+Data for prior 0.5 cfp: 1 cfn: 1
+C =  3.0000000000000004e-05 c = 15 application with prior: 0.5 minDCF =  0.7932539682539682
+Data for prior 0.1 cfp: 1 cfn: 1
+C =  3.0000000000000004e-05 c = 15 application with prior: 0.1 minDCF =  0.9994047619047619
+Data for prior 0.9 cfp: 1 cfn: 1
+C =  3.0000000000000004e-05 c = 15 application with prior: 0.9 minDCF =  0.9944444444444444
+
+PCA m = 10 || k-fold
+Data for prior 0.5 cfp: 1 cfn: 1
+C =  3.0000000000000004e-05 c = 15 application with prior: 0.5 minDCF =  0.8511904761904763
+Data for prior 0.1 cfp: 1 cfn: 1
+C =  3.0000000000000004e-05 c = 15 application with prior: 0.1 minDCF =  0.9994047619047619
+Data for prior 0.9 cfp: 1 cfn: 1
+C =  3.0000000000000004e-05 c = 15 application with prior: 0.9 minDCF =  0.9972222222222222
+
+PCA m = 9 || k-fold
+Data for prior 0.5 cfp: 1 cfn: 1
+C =  3.0000000000000004e-05 c = 15 application with prior: 0.5 minDCF =  0.8561507936507936
+Data for prior 0.1 cfp: 1 cfn: 1
+C =  3.0000000000000004e-05 c = 15 application with prior: 0.1 minDCF =  0.9994047619047619
+Data for prior 0.9 cfp: 1 cfn: 1
+C =  3.0000000000000004e-05 c = 15 application with prior: 0.9 minDCF =  0.9986111111111111
+
+PCA m = 8 || k-fold
+Data for prior 0.5 cfp: 1 cfn: 1
+C =  3.0000000000000004e-05 c = 15 application with prior: 0.5 minDCF =  0.8849206349206349
+Data for prior 0.1 cfp: 1 cfn: 1
+C =  3.0000000000000004e-05 c = 15 application with prior: 0.1 minDCF =  0.9994047619047619
+Data for prior 0.9 cfp: 1 cfn: 1
+C =  3.0000000000000004e-05 c = 15 application with prior: 0.9 minDCF =  0.9986111111111111

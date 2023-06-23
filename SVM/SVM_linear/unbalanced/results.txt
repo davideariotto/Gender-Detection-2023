@@ -1,0 +1,53 @@
+
+no PCA || single-fold
+Data for prior 0.5 cfp: 1 cfn: 1
+C =  0.002 pi_T = None application with prior: 0.5 minDCF =  0.0935231991679349
+Data for prior 0.1 cfp: 1 cfn: 1
+C =  0.002 pi_T = None application with prior: 0.1 minDCF =  0.23601434700479507
+Data for prior 0.9 cfp: 1 cfn: 1
+C =  0.002 pi_T = None application with prior: 0.9 minDCF =  0.2360143470047951
+
+
+PCA m = 10 || single-fold
+Data for prior 0.5 cfp: 1 cfn: 1
+C =  0.002 pi_T = None application with prior: 0.5 minDCF =  1.0
+Data for prior 0.1 cfp: 1 cfn: 1
+C =  0.002 pi_T = None application with prior: 0.1 minDCF =  1.0
+Data for prior 0.9 cfp: 1 cfn: 1
+C =  0.002 pi_T = None application with prior: 0.9 minDCF =  1.0157618213660244
+
+
+PCA m = 8 || single-fold
+Data for prior 0.5 cfp: 1 cfn: 1
+C =  0.002 pi_T = None application with prior: 0.5 minDCF =  0.9973845012580396
+Data for prior 0.1 cfp: 1 cfn: 1
+C =  0.002 pi_T = None application with prior: 0.1 minDCF =  1.0
+Data for prior 0.9 cfp: 1 cfn: 1
+C =  0.002 pi_T = None application with prior: 0.9 minDCF =  1.01139500913895
+
+
+no PCA || k-fold
+Data for prior 0.5 cfp: 1 cfn: 1
+C =  0.002 pi_T = None application with prior: 0.5 minDCF =  0.9906746031746032
+Data for prior 0.1 cfp: 1 cfn: 1
+C =  0.002 pi_T = None application with prior: 0.1 minDCF =  0.9988095238095238
+Data for prior 0.9 cfp: 1 cfn: 1
+C =  0.002 pi_T = None application with prior: 0.9 minDCF =  1.0053571428571428
+
+
+PCA m = 10 || k-fold
+Data for prior 0.5 cfp: 1 cfn: 1
+C =  0.002 pi_T = None application with prior: 0.5 minDCF =  0.873015873015873
+Data for prior 0.1 cfp: 1 cfn: 1
+C =  0.002 pi_T = None application with prior: 0.1 minDCF =  0.9994047619047619
+Data for prior 0.9 cfp: 1 cfn: 1
+C =  0.002 pi_T = None application with prior: 0.9 minDCF =  0.9900793650793652
+
+
+PCA m = 8 || k-fold
+Data for prior 0.5 cfp: 1 cfn: 1
+C =  0.002 pi_T = None application with prior: 0.5 minDCF =  0.969047619047619
+Data for prior 0.1 cfp: 1 cfn: 1
+C =  0.002 pi_T = None application with prior: 0.1 minDCF =  0.9988095238095238
+Data for prior 0.9 cfp: 1 cfn: 1
+C =  0.002 pi_T = None application with prior: 0.9 minDCF =  1.0053571428571428

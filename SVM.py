@@ -54,16 +54,16 @@ def findUnbalancedC (D, L, rangeK=[1.0, 10.0], rangeC=np.logspace(-5, -1, num=30
     -------
     None.
     '''
-    folders = ["./SVM/SVM_linear/unbalanced/noPCA-singlefold.png", "./SVM/SVM_linear/unbalanced/PCA10-singlefold.png", "./SVM/SVM_linear/unbalanced/PCA9-singlefold.png", "./SVM/SVM_linear/unbalanced/noPCA-kfold.png", "./SVM/SVM_linear/unbalanced/PCA10-kfold.png", "./SVM/SVM_linear/unbalanced/PCA9-kfold.png"]
+    folders = ["./SVM/SVM_linear/unbalanced/noPCA-singlefold.png", "./SVM/SVM_linear/unbalanced/PCA10-singlefold.png", "./SVM/SVM_linear/unbalanced/PCA8-singlefold.png", "./SVM/SVM_linear/unbalanced/noPCA-kfold.png", "./SVM/SVM_linear/unbalanced/PCA10-kfold.png", "./SVM/SVM_linear/unbalanced/PCA8-kfold.png"]
     f_idx = 0
     allKFolds = [] 
     evaluationLabels = []
     
     single_fold = True  # flag that shows if we're going to do single or k folds
     for i in range(0,2):    # two iterations: single and k folds   
-        m = 11
-        while (m > 8):  # iterate three times (no pca, pca with m=11 and m=10)
-            if(m == 11):
+        m = 12
+        while (m > 7):  # iterate three times (no pca, pca with m=10 and m=8)
+            if(m == 12):
                 # NO PCA
                 if (single_fold):
                     print("no PCA || single-fold")
@@ -89,7 +89,7 @@ def findUnbalancedC (D, L, rangeK=[1.0, 10.0], rangeC=np.logspace(-5, -1, num=30
                     allKFolds, evaluationLabels = utils.Kfold(D_PCA, L, None, None, False)
                     execute(DTR, LTR, DEV, LEV, allKFolds, evaluationLabels, single_fold, rangeK, rangeC, folders[f_idx])
                     f_idx += 1   
-            m = m - 1
+            m = m - 2
         single_fold = False  
     print("\n\nFINISH PLOTS FOR SVM UNBALANCED")
     
@@ -137,21 +137,21 @@ def findBalancedC (D, L, pi_T, rangeK=[1.0, 10.0], rangeC=np.logspace(-5, -1, nu
     None.
     '''
     prefix = "./SVM/SVM_linear/balanced_" + str(pi_T).replace(".", "") + "/"
-    folders = ["noPCA-singlefold.png", "PCA10-singlefold.png", "PCA9-singlefold.png", "noPCA-kfold.png", "PCA10-kfold.png", "PCA9-kfold.png"]
+    folders = ["noPCA-singlefold.png", "PCA10-singlefold.png", "PCA8-singlefold.png", "noPCA-kfold.png", "PCA10-kfold.png", "PCA8-kfold.png"]
     f_idx = 0
     allKFolds = [] 
     evaluationLabels = []
     
     single_fold = True  # flag that shows if we're going to do single or k folds
     for i in range(0,2):    # two iterations: single and k folds   
-        m = 11
-        while (m > 8):  # iterate three times (no pca, pca with m=7 and m=6)
-            if(m == 11):
+        m = 12
+        while (m > 7):  # iterate three times (no pca, pca with m=7 and m=6)
+            if(m == 12):
                 # NO PCA
                 if (single_fold):
                     print("no PCA || single-fold")
                     (DTR, LTR), (DEV, LEV) = utils.single_fold(D, L, None, None, False)
-                    execute(DTR, LTR, DEV, LEV, allKFolds, evaluationLabels, single_fold, rangeK, rangeC, prefixfolders[f_idx], pi_T)
+                    execute(DTR, LTR, DEV, LEV, allKFolds, evaluationLabels, single_fold, rangeK, rangeC, prefix+folders[f_idx], pi_T)
                     f_idx += 1    
                 else: 
                     print("no PCA || k-folds")
@@ -174,7 +174,7 @@ def findBalancedC (D, L, pi_T, rangeK=[1.0, 10.0], rangeC=np.logspace(-5, -1, nu
                     execute(DTR, LTR, DEV, LEV, allKFolds, evaluationLabels, single_fold, rangeK, rangeC, prefix+folders[f_idx], pi_T)
                     f_idx += 1 
                 
-            m = m - 1
+            m = m - 2
         single_fold = False  
     print("\n\nFINISH PLOTS FOR SVM BALANCED")
     
@@ -200,10 +200,10 @@ def computeLinearSVM(D, L, C, K=1.0, pi_T = None):
     
     single_fold = True  # flag that shows if we're going to do single or k folds
     for i in range(0,2):    # two iterations: single and k folds   
-        m = 11
-        while (m > 8):  # iterate three times (no pca, pca with m=10 and m=9)
+        m = 12
+        while (m > 7):  # iterate three times (no pca, pca with m=10 and m=9)
             print()
-            if(m == 11):
+            if(m == 12):
                 # NO PCA
                 if (single_fold):
                     print("no PCA || single-fold")
@@ -227,7 +227,7 @@ def computeLinearSVM(D, L, C, K=1.0, pi_T = None):
                     allKFolds, evaluationLabels = utils.Kfold(D_PCA, L, None, None, False)
                     execute_compute(DTR, LTR, DEV, LEV, allKFolds, evaluationLabels, single_fold, C, K, pi_T)
             print()    
-            m = m - 1
+            m = m - 2
         single_fold = False
                
     return
@@ -278,9 +278,9 @@ def findPolynomialC (D, L, rangeK=[0.0, 1.0], d=2, rangec=[0, 1, 15], rangeC=np.
     
     single_fold = True  # flag that shows if we're going to do single or k folds
     for i in range(0,2):    # two iterations: single and k folds   
-        m = 11
-        while (m > 8):  # iterate three times (no pca, pca with m=10 and m=9)
-            if(m == 11):
+        m = 12
+        while (m > 7):  # iterate three times (no pca, pca with m=10 and m=9)
+            if(m == 12):
                 # NO PCA
                 if (single_fold):
                     print("no PCA || single-fold")
@@ -302,7 +302,7 @@ def findPolynomialC (D, L, rangeK=[0.0, 1.0], d=2, rangec=[0, 1, 15], rangeC=np.
                     D_PCA = utils.PCA(D, L, m)
                     allKFolds, evaluationLabels = utils.Kfold(D_PCA, L, None, None, False)
                     execute_find(DTR, LTR, DEV, LEV, allKFolds, evaluationLabels, single_fold, m, rangeK, d, rangec, rangeC)      
-            m = m - 1
+            m = m - 2
         single_fold = False
      
     return
@@ -332,7 +332,7 @@ def execute_find(DTR, LTR, DEV, LEV, allKFolds, evaluationLabels, single_fold, m
                 minDCF.append(cost)
                 print("C:", C, ", cost:", cost)
               
-    if(m==11):
+    if(m==12):
         if(single_fold):
             plot.plotFindC(rangeC, minDCF, "C", "./SVM/SVM_poly/noPCA-singlefold.png")
         else:
@@ -371,10 +371,10 @@ def computePolynomialSVM(D, L, C, c, K = 1.0, d = 2):
     
     single_fold = True  # flag that shows if we're going to do single or k folds
     for i in range(0,2):    # two iterations: single and k folds   
-        m = 11
-        while (m > 8):  # iterate three times (no pca, pca with m=10 and m=9)
+        m = 12
+        while (m > 7):  # iterate three times (no pca, pca with m=10 and m=9)
             print()
-            if(m == 11):
+            if(m == 12):
                 # NO PCA
                 if (single_fold):
                     print("no PCA || single-fold")
@@ -446,10 +446,10 @@ def findRBFKernelC (D, L, rangeK = [0.0, 1.0], rangeC = np.logspace(-3, 3, num=3
     
     single_fold = True  # flag that shows if we're going to do single or k folds
     for i in range(0,2):    # two iterations: single and k folds   
-        m = 11
-        while (m > 8):  # iterate three times (no pca, pca with m=10 and m=9)
+        m = 12
+        while (m > 7):  # iterate three times (no pca, pca with m=10 and m=9)
             print()
-            if(m == 11):
+            if(m == 12):
                 # NO PCA
                 if (single_fold):
                     print("no PCA || single-fold")
@@ -471,7 +471,7 @@ def findRBFKernelC (D, L, rangeK = [0.0, 1.0], rangeC = np.logspace(-3, 3, num=3
                     D_PCA = utils.PCA(D, L, m)
                     allKFolds, evaluationLabels = utils.Kfold(D_PCA, L, None, None, False)
                     execute_find_RBF(DTR, LTR, DEV, LEV, allKFolds, evaluationLabels, single_fold, m, rangeK, rangeC, rangeGamma)      
-            m = m - 1
+            m = m - 2
         single_fold = False
      
     
@@ -502,7 +502,7 @@ def execute_find_RBF(DTR, LTR, DEV, LEV, allKFolds, evaluationLabels, single_fol
                 minDCF.append(cost)
                 print("C:", C, ", cost:", cost)
                 
-    if(m==11):
+    if(m==12):
         if(single_fold):
             plot.plotDCF_RBF(rangeC, minDCF, "C", "./SVM/RBFKernel/noPCA-singlefold.png")
         else: plot.plotDCF_RBF(rangeC, minDCF, "C", "./SVM/RBFKernel/noPCA-kfold.png")
@@ -538,10 +538,10 @@ def computeRBFKernel(D, L, C, gamma, K = 1.0):
     
     single_fold = True  # flag that shows if we're going to do single or k folds
     for i in range(0,2):    # two iterations: single and k folds   
-        m = 11
-        while (m > 8):  # iterate three times (no pca, pca with m=7 and m=6)
+        m = 12
+        while (m > 7):  # iterate three times (no pca, pca with m=7 and m=6)
             print()
-            if(m == 11):
+            if(m == 12):
                 # NO PCA
                 if (single_fold):
                     print("no PCA || single-fold")
@@ -563,7 +563,7 @@ def computeRBFKernel(D, L, C, gamma, K = 1.0):
                     D_PCA = utils.PCA(D, L, m)
                     allKFolds, evaluationLabels = utils.Kfold(D_PCA, L, None, None, False)
                     execute_RBF(DTR, LTR, DEV, LEV, allKFolds, evaluationLabels, single_fold, C, gamma, K)      
-            m = m - 1
+            m = m - 2
         single_fold = False
     
     return

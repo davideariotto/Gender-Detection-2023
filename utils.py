@@ -34,36 +34,13 @@ def load(filename):
     
     return dataset_matrix, labels_array
 
+
 # Transform the data into a distribution with 0 mean and 1 variance
 def ZNormalization(D, mu = None, sigma = None):
     mu = D.mean(axis=1)
     sigma = D.std(axis=1)
     normalizedData = (D - mcol(mu)) / mcol(sigma)
     return normalizedData, mu, sigma
-
-# Perform gaussianization
-def Gaussianization(D):
-    
-    TD = np.zeros(D.shape)
-    
-    '''
-    ranks=[]
-    for j in range(D.shape[0]):
-        tempSum=0
-        for i in range(TD.shape[1]):
-            tempSum+=(D[j, :]<TD[j, i]).astype(int)
-        tempSum+=1
-        ranks.append(tempSum/(TD.shape[1]+2))
-    y = norm.ppf(ranks)
-    '''
-    
-    for i in range(D.shape[1]):
-        x = D[:,i]
-        count = np.sum(x.reshape((x.shape[0],1))>D,axis=1)
-        rank = (count+1)/ (D.shape[1]+2)
-        TD[:,i]= norm.ppf(rank)
-     
-    return TD
 
 
 # Single fold
