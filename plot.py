@@ -164,13 +164,12 @@ def bayesErrorPlotTotal(actualDCF_MVG, minDCF_MVG, actualDCF_LR, minDCF_LR, actu
     plt.xlim([min(effective_prior), max(effective_prior)])
     plt.legend(["Tied Full-Cov - act DCF", " Tied Full-Cov - min DCF",
                 "Log Reg - act DCF", "Log Reg - min DCF",
-                "Full-Cov, 16-G - act DCF", "Full-Cov, 16-G - min DCF"])
+                "Tied-Cov, 8-G - act DCF", "Tied-Cov, 8-G - min DCF"])
     plt.xlabel(r'$\log \frac{\tilde{\pi}}{1-\tilde{\pi}}$')
     plt.ylabel("DCF")
     plt.title(text, pad = 12.0)
     plt.savefig(folder_name, dpi=1200)
-    return
-
+    return    
 
 def plotROC(TPR, FPR, TPR1, FPR1, TPR2, FPR2, folder_name):
     # Function used to plot TPR(FPR)

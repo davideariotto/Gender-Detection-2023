@@ -396,7 +396,7 @@ def computePolynomialSVM(D, L, C, c, K = 1.0, d = 2):
                     D_PCA = utils.PCA(D, L, m)
                     allKFolds, evaluationLabels = utils.Kfold(D_PCA, L, None, None, False)
                     execute_poly(DTR, LTR, DEV, LEV, allKFolds, evaluationLabels, single_fold, C, c, K, d)    
-            m = m - 1
+            m = m - 2
         single_fold = False
            
     return

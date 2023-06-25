@@ -10,18 +10,16 @@ import plot
 # EXPERIMENTAL RESULTS
 def computeExperimentalResults(D, L, Dtest, Ltest):
     
-    D_PCA = utils.PCA(D, L, 9)
-    D_PCA_TEST = utils.PCA(Dtest, Ltest, 9)
+    D_PCA = utils.PCA(D, L, 10)
+    D_PCA_TEST = utils.PCA(Dtest, Ltest, 10)
     
-    # no PCA
     print("no PCA")
     ER_MVG(D, L, Dtest, Ltest)
     ER_LR(D, L, Dtest, Ltest)
     ER_SVM(D, L, Dtest, Ltest)
     ER_GMM(D, L, Dtest, Ltest)
     
-    # PCA m = 7
-    print("PCA m = 9")
+    print("PCA m = 10")
     ER_MVG(D_PCA, L, D_PCA_TEST, Ltest)
     ER_LR(D_PCA, L, D_PCA_TEST, Ltest)
     ER_SVM(D_PCA, L, D_PCA_TEST, Ltest)
@@ -89,7 +87,7 @@ def ER_SVM(D, L, Dtest, Ltest):
     
     K_linear = 1.0
        
-    C_linear = 10**(-2)
+    C_linear = 2*10**-3 
     print("Linear SVM unbalanced")
     w = SVM.trainLinearSVM(D, L, C = C_linear, K = K_linear)
     
@@ -97,7 +95,7 @@ def ER_SVM(D, L, Dtest, Ltest):
         minDCF_test = utils.minimum_detection_costs(SVM.getScoresLinearSVM(w, Dtest, K = K_linear), Ltest, model[0], model[1], model[2])
         print("C:", C_linear, "prior:", model[0], "minDCF:", minDCF_test)
           
-    C_linear = 10**(-3)
+    C_linear = 2*10**-3
     prior = 0.5
     print("Linear SVM with pi_T = 0.5")
     w = SVM.trainLinearSVM(D, L, C = C_linear, K = K_linear, pi_T = prior)
@@ -106,7 +104,7 @@ def ER_SVM(D, L, Dtest, Ltest):
         minDCF_test = utils.minimum_detection_costs(SVM.getScoresLinearSVM(w, Dtest, K = K_linear), Ltest, model[0], model[1], model[2])
         print("C:", C_linear, "prior:", model[0], "minDCF:", minDCF_test)
     
-    C_linear = 6*10**(-3)
+    C_linear = 10**-2
     prior = 0.1
     print("Linear SVM with pi_T = 0.1")
     w = SVM.trainLinearSVM(D, L, C = C_linear, K = K_linear, pi_T = prior)
@@ -115,7 +113,7 @@ def ER_SVM(D, L, Dtest, Ltest):
         minDCF_test = utils.minimum_detection_costs(SVM.getScoresLinearSVM(w, Dtest, K = K_linear), Ltest, model[0], model[1], model[2])
         print("C:", C_linear, "prior:", model[0], "minDCF:", minDCF_test)
      
-    C_linear = 7*10**(-4)
+    C_linear = 10**-3
     prior = 0.9
     print("Linear SVM with pi_T = 0.9")
     w = SVM.trainLinearSVM(D, L, C = C_linear, K = K_linear, pi_T = prior)
@@ -124,7 +122,7 @@ def ER_SVM(D, L, Dtest, Ltest):
         minDCF_test = utils.minimum_detection_costs(SVM.getScoresLinearSVM(w, Dtest, K = K_linear), Ltest, model[0], model[1], model[2])
         print("C:", C_linear, "prior:", model[0], "minDCF:", minDCF_test)
           
-    C_quadratic = 5*10**(-5)
+    C_quadratic = 3*10**(-5)
     c = 15
     d = 2
     K_quadratic = 1.0
@@ -135,7 +133,7 @@ def ER_SVM(D, L, Dtest, Ltest):
         minDCF_test = utils.minimum_detection_costs(SVM.getScoresPolynomialSVM(x, D, L, Dtest, K = K_quadratic, c = c, d = d), Ltest, model[0], model[1], model[2])
         print("C:", C_quadratic, "c:", c, "d:", d, "prior:", model[0], "minDCF:", minDCF_test)
      
-    C_RBF = 10**(-1)
+    C_RBF = 1
     gamma = 10**(-3)
     K_RBF = 1.0
     print("RBF Kernel SVM")
@@ -149,9 +147,9 @@ def ER_SVM(D, L, Dtest, Ltest):
 
 def ER_GMM(D, L, Dtest, Ltest):
     
-    nComp_full = 4 # 2^4 = 16
-    nComp_diag = 5 # 2^5 = 32
-    nComp_tied = 6 # 2^6 = 64
+    nComp_full = 2 # 2^2 = 4
+    nComp_diag = 4 # 2^4 = 16
+    nComp_tied = 3 # 2^3 = 8
     
     
     print("GMM Full-Cov", 2**(nComp_full), "components")
@@ -397,11 +395,8 @@ def computeROC(D, L, Dtest, Ltest):
     lambd = 1e-4
     prior = 0.5
     
-    D_PCA = utils.PCA(D, L, 9)
-    D_PCA_T = utils.PCA(Dtest, Ltest, 9)
-    
-    TPR_tiedcov, FPR_tiedcov = computeTiedCov(D_PCA, L, D_PCA_T, Ltest, lambd, prior)
-    TPR_lr, FPR_lr = computeLR(D_PCA, L, D_PCA_T, Ltest, lambd, prior)
+    TPR_tiedcov, FPR_tiedcov = computeTiedCov(D, L, Dtest, Ltest, lambd, prior)
+    TPR_lr, FPR_lr = computeLR(D, L, Dtest, Ltest, lambd, prior)
     TPR_gmm, FPR_gmm = computeGMM(D, L, Dtest, Ltest, lambd, prior)
     
     plot.plotROC(TPR_tiedcov, FPR_tiedcov, TPR_lr, FPR_lr, TPR_gmm, FPR_gmm, "./ROC/rocplot.png")
@@ -411,7 +406,7 @@ def computeROC(D, L, Dtest, Ltest):
 
 def computeTiedCov(D, L, Dtest, Ltest, lambd, prior = 0.5):
     
-    print("Tied-Cov PCA m = 9")
+    print("MVG Tied Full-Cov noPCA")
     
     TPR = []
     FPR = []
@@ -431,7 +426,7 @@ def computeTiedCov(D, L, Dtest, Ltest, lambd, prior = 0.5):
 
 def computeLR(D, L, Dtest, Ltest, lambd, prior = 0.5):
     
-    print("LR PCA m = 9")
+    print("LR noPCA ")
     
     TPR = []
     FPR = []
@@ -450,15 +445,15 @@ def computeLR(D, L, Dtest, Ltest, lambd, prior = 0.5):
     return (TPR, FPR)
 
 def computeGMM(D, L, Dtest, Ltest, lambd, prior = 0.5):
-    components = 4 # 16 components 
+    components = 3 # 8 components 
     
-    print("GMM PCA m = 9 with", 2**components, "components")
+    print("GMM noPCA with", 2**components, "components")
         
     TPR = []
     FPR = []
-    GMM0, GMM1 = GMM.trainGaussianClassifier(D, L, components)
+    GMM0, GMM1 = GMM.trainTiedCov(D, L, components)
     
-    GMM_scores = GMM.getScoresGaussianClassifier(Dtest, GMM0, GMM1)
+    GMM_scores = GMM.getScoresTiedCov(Dtest, GMM0, GMM1)
     scores = sr.calibrateScores(GMM_scores, Ltest, lambd, prior).flatten()
     sortedScores = np.sort(scores)
     

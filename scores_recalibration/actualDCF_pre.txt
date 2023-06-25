@@ -1,0 +1,16 @@
+
+MVG Tied Full-Cov - noPCA 
+Application with prior: 0.5 actualDCF = 0.11944444444444444
+Application with prior: 0.1 actualDCF = 0.3107142857142857
+Application with prior: 0.9 actualDCF = 0.3712301587301588
+
+
+Linear Logistic Regression, Lambda = 0.0001 pi_T = 0.5 - noPCA 
+Lambda =  0.0001 pi_T = 0.5 and application with prior: 0.5 actualDCF = 0.12242063492063492
+Lambda =  0.0001 pi_T = 0.5 and application with prior: 0.1 actualDCF = 0.2994047619047619
+Lambda =  0.0001 pi_T = 0.5 and application with prior: 0.9 actualDCF = 0.3650793650793651
+
+Tied-Cov GMM with 8 components - noPCA 
+Application with prior: 0.5 actualDCF = 0.06666666666666667
+Application with prior: 0.1 actualDCF = 0.28154761904761905
+Application with prior: 0.9 actualDCF = 0.21031746031746035

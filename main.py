@@ -90,7 +90,7 @@ RBF SVM
 C_RBF = 1
 gamma_RBG = 10**(-3)
 
-SVM.computeRBFKernel(normalizedData, L, C = C_RBF, gamma = gamma_RBG, K = 1.0)
+#SVM.computeRBFKernel(normalizedData, L, C = C_RBF, gamma = gamma_RBG, K = 1.0)
 
 '''
 
@@ -101,8 +101,8 @@ GAUSSIAN MIXTURE MODEL
 ### TO DO !!!
 # Best values of components for each model
 nComp_full = 2 # 2^2 = 4
-nComp_diag = 4 # 2^5 = 32
-nComp_tied = 3 # 2^6 = 64
+nComp_diag = 4 # 2^4 = 16
+nComp_tied = 3 # 2^3 = 8
 
 '''
 
@@ -110,10 +110,10 @@ SCORES RECALIBRATION
 
 '''
 
-#sr.computeActualDCF(normalizedData, L, lambd = lambd_lr, components = nComp_full)
-#sr.computeBayesErrorPlots(normalizedData, L, lambd = lambd_lr, components = nComp_full)
-#sr.calibratedBayesErrorPlots(normalizedData, L, lambd = lambd_lr, components = nComp_full)
-#sr.computeCalibratedErrorPlot(normalizedData, L, lambd = lambd_lr, components = nComp_full)
+#sr.computeActualDCF(normalizedData, L, lambd = lambd_lr, components = nComp_tied)
+#sr.computeBayesErrorPlots(normalizedData, L, lambd = lambd_lr, components = nComp_tied)
+#sr.calibratedBayesErrorPlots(normalizedData, L, lambd = lambd_lr, components = nComp_tied)
+#sr.computeCalibratedErrorPlot(normalizedData, L, lambd = lambd_lr, components = nComp_tied)
     
     
 # EXPERIMENTAL RESULTS 
@@ -122,11 +122,11 @@ SCORES RECALIBRATION
 DT, LT = utils.load("data/Test.txt")
 
 # On Z-normalization we use the mean and the standard deviation of the Z-normalization done on the training set
-#normalizedDataTest, _, _ = utils.ZNormalization(DT, normalizedMean, normalizedStandardDeviation)
-#normalizedDataTest = utils.Gaussianization(normalizedDataTest)
+normalizedDataTest, _, _ = utils.ZNormalization(DT, normalizedMean, normalizedStandardDeviation)
+
 
 #ep.computeExperimentalResults(normalizedData, L, normalizedDataTest, LT)
 
-#ep.EvaluateHyperParameterChosen(normalizedData, L, normalizedDataTest, LT)
+ep.EvaluateHyperParameterChosen(normalizedData, L, normalizedDataTest, LT)
 
-#ep.computeROC(normalizedData, L, normalizedDataTest, LT)
+ep.computeROC(normalizedData, L, normalizedDataTest, LT)
