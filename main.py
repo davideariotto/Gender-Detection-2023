@@ -5,6 +5,8 @@ import gaussianClassifier as gc
 import SVM
 import scoresRecalibration as sr
 import experimentalPart as ep
+import logisticRegression as lr
+import GMM
 
 # Load the training data
 D, L = utils.load("data/Train.txt")
