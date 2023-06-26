@@ -127,6 +127,6 @@ normalizedDataTest, _, _ = utils.ZNormalization(DT, normalizedMean, normalizedSt
 
 #ep.computeExperimentalResults(normalizedData, L, normalizedDataTest, LT)
 
-ep.EvaluateHyperParameterChosen(normalizedData, L, normalizedDataTest, LT)
+#ep.EvaluateHyperParameterChosen(normalizedData, L, normalizedDataTest, LT)
 
 ep.computeROC(normalizedData, L, normalizedDataTest, LT)
