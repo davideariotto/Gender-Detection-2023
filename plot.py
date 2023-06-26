@@ -178,7 +178,7 @@ def plotROC(TPR, FPR, TPR1, FPR1, TPR2, FPR2, folder_name):
     plt.plot(FPR, TPR, linewidth=2, color='r')
     plt.plot(FPR1, TPR1, linewidth=2, color='b')
     plt.plot(FPR2, TPR2, linewidth=2, color='g')
-    plt.legend(["MVG Tied Full-Cov", "Logistic regression", "Full-Cov, 16-G"])
+    plt.legend(["MVG Tied Full-Cov", "Logistic regression", "GMM Tied-Cov, 8-G"])
     plt.xlabel("FPR")
     plt.ylabel("TPR")
     plt.savefig(folder_name, dpi=1200)
